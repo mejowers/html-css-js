@@ -1,0 +1,19 @@
+.lang { border: 2px solid gray;
+    font-size: 12pt;
+    font-weight: bold;
+    text-align: center
+
+}
+body {
+    font-family: Helvetica, 'Times New Roman', san-serif;
+    font-size: 14pt;
+    
+}
+
+h3 {
+    color: #142aec;
+    font-size: 1.2em;
+    font-weight: bold;
+    background-color: beige;
+    
+}
