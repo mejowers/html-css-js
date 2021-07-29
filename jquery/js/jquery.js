@@ -7,10 +7,17 @@ let topics = [
 $( () => {
     console.log("The HTML is loaded!");
     display();
-    $("button").on("click", () => {
+    $("button#toggle").on("click", () => {
         toggle();
     });
+    $("#hide").on("click", () => {
+        $("table").Toggle();
+    });
     toggle();
+    $("#copy").on("click", () => {
+        let value = $("#in").val();
+        $("#out").val(value);
+    });
 } );
 
 let red = true;
