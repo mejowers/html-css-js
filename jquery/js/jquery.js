@@ -7,7 +7,22 @@ let topics = [
 $( () => {
     console.log("The HTML is loaded!");
     display();
+    $("button").on("click", () => {
+        toggle();
+    });
+    toggle();
 } );
+
+let red = true;
+const toggle = () => {
+    if(red) {
+        $("th").css("color", "red").css("fontStyle", "italic").css("fontSize", "1em");
+    }  else {
+        $("th").css("color", "green").css("fontStyle", "normal").css("fontSize", "2em");
+    } 
+    red = !red;
+}
+
 
 const display = () => {
     let tbody = $("#tbody");
@@ -20,3 +35,4 @@ const display = () => {
         tbody.append(tr);
     }
 }
+
