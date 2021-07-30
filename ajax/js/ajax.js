@@ -2,7 +2,9 @@
 
 $(() => {
     console.log("Everything is ready!");
+}); 
 
+const getAllUsers = () => {
     $.getJSON(`http://localhost:8080/api/users/`)
         .done(res => {
             console.debug(res);
@@ -11,7 +13,7 @@ $(() => {
         .fail(err => {
             console.error(err);
         });
-}); 
+    }
 
 const display = (users) => {
     let tbody = $("tbody");
