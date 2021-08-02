@@ -9,8 +9,10 @@ $(() => {
    })
   
    $("#save").on("click", () => {
-        update();
-    })
+       let user = {};
+       getFromPage(user);
+        updateUser(user);
+    });
 });
 
 const getUserById = (id) => {
@@ -36,27 +38,43 @@ const displayUser = (user) => {
     $("#uAdmin").prop("checked", user.admin);
 }
 
-const update = () => {
-    let updateUser = {
-        id: $("uId").val(),
-        username: $("#uUsername").val(),
-        password: $("#uPassword").val(),
-        firstName: $("#uFirstName").val(),
-        lastName: $("#uLastName").val(),
-        phone: $("#uPhone").val(),
-        email: $("#uEmail").val(),
-        reviewer: $("#uReviewer").prop("checked"),
-        admin: $("#uAdmin").prop("checked")
-    }
+// const update = () => {
+//     let updateUser = {
+//         id: $("#uId").val(),
+//         username: $("#uUsername").val(),
+//         password: $("#uPassword").val(),
+//         firstName: $("#uFirstName").val(),
+//         lastName: $("#uLastName").val(),
+//         phone: $("#uPhone").val(),
+//         email: $("#uEmail").val(),
+//         reviewer: $("#uReviewer").prop("checked"),
+//         admin: $("#uAdmin").prop("checked")
+//     }
 
+    const getFromPage = (user) => {
+            user.id = $("#uId").val(),
+            user.username = $("#uUsername").val(),
+            user.password = $("#uPassword").val(),
+            user.firstName = $("#uFirstName").val(),
+            user.lastName = $("#uLastName").val(),
+            user.phone = $("#uPhone").val(),
+            user.email = $("#uEmail").val(),
+            user.reviewer = $("#uReviewer").prop("checked"),
+            user.admin = $("#uAdmin").prop("checked")
+        }
+
+    const updateUser = (user) => {
+        // user.id = Number(user.id);
+        user.id = +user.id;
+        console.log(user);
     $.ajax({
         method: "PUT",
-        url: "${baseurl}${id}",
-        data: JSON.stringify(updateUser),
+        url: `${baseurl}`,
+        data: JSON.stringify(user),
         contentType: "application/json"
     })
       .done(res => {
-          console.debug(res, " - Updated!");
+          console.debug("Update successful!");
       })
       .fail(err => {
           console.error(err);
