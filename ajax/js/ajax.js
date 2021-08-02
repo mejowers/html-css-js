@@ -2,8 +2,19 @@
 
 $(() => {
     console.log("Everything is ready!");
-    getUserById(3);
+    //  getUserById(3);
+    getAllUsers();
 }); 
+
+const getAllUsers = (users) => {
+    $.getJSON(`http://localhost:8080/api/users/`)
+        .done(res => {console.debug(res);
+        displayUser(res);
+    })
+    .fail(err => {
+        console.error(err);
+    })
+}
 
 const getUserById = (id) => {
     $.getJSON(`http://localhost:8080/api/users/${id}`)
@@ -27,16 +38,6 @@ const displayUser = (user) => {
     $("#dAdmin").text(`${(user.admin ? "Yes" : "No")}`);
 }
 
-const getAllUsers = () => {
-    $.getJSON(`http://localhost:8080/api/users/`)
-        .done(res => {
-            console.debug(res);
-            display(res);
-        })
-        .fail(err => {
-            console.error(err);
-        });
-    }
 
 const display = (users) => {
     let tbody = $("tbody");
