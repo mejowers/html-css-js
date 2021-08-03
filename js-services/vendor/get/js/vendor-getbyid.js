@@ -12,6 +12,7 @@ $(() => {
     })
 });
 
+
 const display = (vendor) => {
     $("#dId").val(vendor.id);
     $("#dCode").val(vendor.code);
