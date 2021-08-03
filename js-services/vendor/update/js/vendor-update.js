@@ -44,7 +44,7 @@ const update = () => {
     vendor.phone = $("#uPhone").val();
     vendor.email = $("#uEmail").val();
 
-
+vendor.id = Number(vendor.id);
 vendorUpdate(vendor)
     .done(res => {
     console.debug(res);
