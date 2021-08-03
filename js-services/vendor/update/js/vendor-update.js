@@ -17,22 +17,27 @@ $(() => {
     $("save").on("click", () => {
         let vendor = {};
         getVendor(vendor);
-        vendorUpdate(vendor);
+        vendor.id = Number(vendor.id);
+        vendorUpdate(vendor)
+            .done(res => {
+            console.debug(res);
+            display(res);
+            
+            })
+            .fail(err => console.error(err));
     });
-
 });
 
-
 const display = (vendor) => {
-    $("#dId").val(vendor.id);
-    $("#dCode").val(vendor.code);
-    $("#dName").val(vendor.name);
-    $("#dAddress").val(vendor.address);
-    $("#dCity").val(vendor.city);
-    $("#dState").val(vendor.state);
-    $("#dZip").val(vendor.zip);
-    $("#dPhone").val(vendor.phone);
-    $("#dEmail").val(vendor.email);    
+    $("#uId").val(vendor.id);
+    $("#uCode").val(vendor.code);
+    $("#uName").val(vendor.name);
+    $("#uAddress").val(vendor.address);
+    $("#uCity").val(vendor.city);
+    $("#uState").val(vendor.state);
+    $("#uZip").val(vendor.zip);
+    $("#uPhone").val(vendor.phone);
+    $("#uEmail").val(vendor.email);    
 }
 
 const getVendor = (vendor) => {
@@ -46,6 +51,8 @@ const getVendor = (vendor) => {
     vendor.phone = $("#uPhone").val(),
     vendor.email = $("#uEmail").val()
 }
+
+
 
 
    
