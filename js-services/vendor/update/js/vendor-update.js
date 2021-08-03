@@ -2,29 +2,21 @@
 
 $(() => {
     $("#zGet").on("click", () => {
-        var id = $("#zId").val();
-        console.log("Id is ", id);
-        vendorGetById(id) 
-           .done(res => {
-            console.debug(res);
-            display(res);
-        })
-            .fail(err => {
-                console.error(err);
-            });
-    })
-
-    $("save").on("click", () => {
-        let vendor = {};
-        getVendor(vendor);
-        vendor.id = Number(vendor.id);
-        vendorUpdate(vendor)
+        let id = $("#zId").val();
+        vendorGetById(id)
             .done(res => {
-            console.debug(res);
-            display(res);
-            
+                console.debug(res);
+                display(res);
             })
-            .fail(err => console.error(err));
+            .fail (err => {
+                $("#message").html("</b>Vendor not found!</b>");
+                console.error(err);
+    });
+});
+
+    $("#save").on("click", () => {
+       update();
+
     });
 });
 
@@ -40,17 +32,31 @@ const display = (vendor) => {
     $("#uEmail").val(vendor.email);    
 }
 
-const getVendor = (vendor) => {
-    vendor.id = $("#uid").val(),
-    vendor.code = $("#uCode").val(),
-    vendor.name = $("#uName").val(),
-    vendor.address = $("#uAddress").val(),
-    vendor.city = $("#uCity").val(),
-    vendor.state = $("#uState").val(),
-    vendor.zip = $("#uZip").val(),
-    vendor.phone = $("#uPhone").val(),
-    vendor.email = $("#uEmail").val()
-}
+const update = () => {
+    let vendor = {};
+    vendor.id = $("#uId").val();
+    vendor.code = $("#uCode").val();
+    vendor.name = $("#uName").val();
+    vendor.address = $("#uAddress").val();
+    vendor.city = $("#uCity").val();
+    vendor.state = $("#uState").val();
+    vendor.zip = $("#uZip").val();
+    vendor.phone = $("#uPhone").val();
+    vendor.email = $("#uEmail").val();
+
+
+vendorUpdate(vendor)
+    .done(res => {
+    console.debug(res);
+    console.log("Update successful!");
+    $("#message").html("<b>Change successful!</b>");
+    
+    })
+    .fail(err => console.error(err));
+    $("#message").html("<b>Change successful!</b>");
+};
+
+  
 
 
 

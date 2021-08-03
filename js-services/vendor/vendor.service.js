@@ -19,7 +19,7 @@ const vendorAdd = (vendor) => {
 const vendorUpdate = (vendor) => {
     return $.ajax({
         method: "PUT",
-        url: `${baseurl}${vendor.id}`,
+        url: `${baseurl}`,
         data: JSON.stringify(vendor),
         contentType: 'application/json'
     });
