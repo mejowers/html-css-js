@@ -30,8 +30,6 @@ $(() => {
 });
 
 
-
-
 const display = (vendor) => {
     $("#rId").val(vendor.id);
     $("#rCode").val(vendor.code);
@@ -42,9 +40,5 @@ const display = (vendor) => {
     $("#rZip").val(vendor.zip);
     $("#rPhone").val(vendor.phone);
     $("#rEmail").val(vendor.email);    
-
-
-
-
 };
 

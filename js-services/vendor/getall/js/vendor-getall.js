@@ -21,6 +21,8 @@ const display = (vendors) => {
         tr.append($(`<td>${vendor.city}, ${vendor.state} ${vendor.zip}</td>`));
         tr.append($(`<td>${vendor.phone}</td>`));
         tr.append($(`<td>${vendor.email}</td>`));
+        tr.append($(`<td><a href="../get/vendor-getbyid.html?id=${vendor.id}">Detail</a>`));
+        tr.append($(`<a href="../update/vendor-update.html?id=${vendor.id}">Edit</a></td>`));
         tbody.append(tr);
 
     }

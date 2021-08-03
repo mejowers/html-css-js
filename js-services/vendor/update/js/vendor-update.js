@@ -1,8 +1,10 @@
 
 
 $(() => {
-    $("#zGet").on("click", () => {
-        let id = $("#zId").val();
+    // $("#zGet").on("click", () => {
+    //     let id = $("#zId").val();
+    let urlParms = parseUrl();
+    let id = +urlParms.id;
         vendorGetById(id)
             .done(res => {
                 console.debug(res);
@@ -12,7 +14,6 @@ $(() => {
                 $("#message").html("</b>Vendor not found!</b>");
                 console.error(err);
     });
-});
 
     $("#save").on("click", () => {
        update();
@@ -50,8 +51,8 @@ vendorUpdate(vendor)
     console.debug(res);
     console.log("Update successful!");
     $("#message").html("<b>Change successful!</b>");
-    
-    })
+    window.location.href = "../getall/vendor-getall.html";
+   })
     .fail(err => console.error(err));
     $("#message").html("<b>Change successful!</b>");
 };

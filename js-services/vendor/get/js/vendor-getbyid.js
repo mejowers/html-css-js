@@ -1,15 +1,24 @@
 
 $(() => {
 
-    $("#zGet").on("click", () => {
-        let id = $("#zId").val();
-        vendorGetById(id)
-            .done(res => {
-                console.debug(res);
-                display(res);
+    let urlParms = parseUrl();
+    let id = +urlParms.id;
+    vendorGetById(id)
+        .done(res => {
+            console.debug(res);
+            display(res);
             })
             .fail(err => console.error(err));
-    })
+
+    // $("#zGet").on("click", () => {
+    //     let id = $("#zId").val();
+    //     vendorGetById(id)
+    //         .done(res => {
+    //             console.debug(res);
+    //             display(res);
+    //         })
+    //         .fail(err => console.error(err));
+    // })
 });
 
 
